@@ -1,0 +1,45 @@
+<!DOCTYPE html><html><head>
+    <script src="p5.js"></script>
+    <script src="p5.dom.min.js"></script>
+    <script src="p5.sound.min.js"></script>
+     
+   
+   <script type="text/paperscript" canvas="sheet">
+        var path;
+
+        function onMouseDown(event) {
+            // If we produced a path before, deselect it:
+            if (path) {
+                path.selected = false;
+            }
+
+            // Create a new path and set its stroke color to black:
+            path = new Path({
+                segments: [event.point],
+                strokeColor: 'black',
+                strokeWidth: 3
+            });
+        }
+
+        // While the user drags the mouse, points are added to the path
+        // at the position of the mouse:
+        function onMouseDrag(event) {
+            path.add(event.point);
+        }
+
+        // When the mouse is released, we simplify the path:
+        function onMouseUp(event) {
+            path.simplify();
+        }
+    </script>
+
+<script src="./p5.play.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="utf-8">
+
+  </head>
+  <body>
+      <script src="sketch.js"></script>
+  
+
+</body></html>
